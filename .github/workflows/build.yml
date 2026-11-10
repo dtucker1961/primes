@@ -1,0 +1,24 @@
+name: Build and test
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+
+      - name: Build program
+        run: g++ -std=c++17 -Wall -Wextra -Werror -o primes primes.cpp
+
+      - name: Build tests
+        run: g++ -std=c++17 -Wall -Wextra -Werror -o test_primes test_primes.cpp
+
+      - name: Run tests
+        run: ./test_primes
+
+      - name: Smoke test
+        run: ./primes 30
