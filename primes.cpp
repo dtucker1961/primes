@@ -5,7 +5,7 @@
 std::vector<int> primes_up_to(int n) {
     std::vector<bool> is_prime(n + 1, true);
     std::vector<int> result;
-    for (int i = 2; i <= n; ++i) {
+    for (int i = 2; i < n; ++i) {
         if (!is_prime[i]) continue;
         result.push_back(i);
         for (long long j = (long long)i * i; j <= n; j += i)
